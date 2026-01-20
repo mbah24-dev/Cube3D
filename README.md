@@ -6,6 +6,9 @@
 </head>
 <body>
     <h1>cub3D</h1>
+    <p align="center">
+      <img src="https://github.com/mbah24-dev/mbah24-dev/blob/main/42_badges/cub3de.png" alt="Cub3D 42 project badge"/>
+    </p>
     <p><strong>Author:</strong> BAH Mamadou</p>
     <p><strong>Status:</strong> Student in common core at 42 School</p>
     <h2>Project Overview</h2>
