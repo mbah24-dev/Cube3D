@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>cub3D - 42 School Project</title>
+    
 </head>
 <body>
     <h1>cub3D</h1>
