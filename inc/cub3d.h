@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:57:03 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/24 18:29:12 by mbah             ###   ########.fr       */
+/*   Updated: 2026/01/24 18:30:14 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -231,5 +231,60 @@
 
 # define ERROR_MLX_IMG \
 "Impossible de créer l'image graphique"
+
+/* ************************************************************************** */
+/*                                      FUNCTIONS                             */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                            VALIDATE_FILE FUNCTIONS                         */
+/* ************************************************************************** */
+
+int		validate_file(bool cub, char *path);
+
+/* ************************************************************************** */
+/*                              CLEANUP FUNCTIONS                             */
+/* ************************************************************************** */
+
+int		free_engine(t_engine *engine);
+void	free_2d_array(void **array);
+
+/* ************************************************************************** */
+/*                              ERROR_HANDLING FUNCTIONS                      */
+/* ************************************************************************** */
+
+int		print_error_msg(char *detail, char *message, int code);
+int		print_error_msg_int(int detail, char *message, int code);
+
+/* ************************************************************************** */
+/*                              EXIT_PROG FUNCTIONS                           */
+/* ************************************************************************** */
+
+void	clean_exit(t_engine *engine, int code);
+int		quit_cub3d(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              INIT_ENGINE FUNCTIONS                         */
+/* ************************************************************************** */
+
+void	init_engine(t_engine *engine);
+void	init_raycast(t_raycast *ray);
+void	init_image(t_image *img);
+
+/* ************************************************************************** */
+/*                              INIT_MLX FUNCTIONS                         */
+/* ************************************************************************** */
+
+void	init_image_mlx(t_engine *engine, t_image *image,
+			int width, int height);
+void	init_texture_image(t_engine *engine, t_image *image, char *path);
+void	init_mlx(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              INIT_TEXTURES FUNCTIONS                       */
+/* ************************************************************************** */
+
+void	init_texture_info(t_texture_info *texinfo);
+void	init_textures(t_engine *engine);
 
 #endif
