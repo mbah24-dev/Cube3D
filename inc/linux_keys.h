@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 23:01:04 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/31 02:31:44 by mbah             ###   ########.fr       */
+/*   Updated: 2026/01/31 14:23:21 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@
 # define EVENT_MOUSE_MOVE      6
 # define EVENT_DESTROY         17
 
-#  define KEY_ESC    65307
-#  define KEY_W      119
-#  define KEY_A      97
-#  define KEY_S      115
-#  define KEY_D      100
-#  define KEY_LEFT   65361
-#  define KEY_RIGHT  65363
+# define KEY_ESC    65307
+# define KEY_W      119
+# define KEY_A      97
+# define KEY_S      115
+# define KEY_D      100
+# define KEY_LEFT   65361
+# define KEY_RIGHT  65363
 
 # define MASK_KEY_PRESS        0
 # define MASK_KEY_RELEASE      1

@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:57:03 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/31 02:36:53 by mbah             ###   ########.fr       */
+/*   Updated: 2026/01/31 14:25:00 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,6 +364,5 @@ void	debug_display_engine(t_engine *engine);
 void	mlx_platform_cleanup(void *mlx);
 void	mlx_center_mouse(t_engine *engine);
 void	mlx_move_mouse(t_engine *engine, int x, int y);
-
 
 #endif
