@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:57:03 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/30 16:40:35 by mbah             ###   ########.fr       */
+/*   Updated: 2026/01/31 02:36:53 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,42 +39,16 @@
 
 #  include "mlx.h"
 #  include <ApplicationServices/ApplicationServices.h>
-
-#  define KEY_ESC    53
-#  define KEY_W      13
-#  define KEY_A      0
-#  define KEY_S      1
-#  define KEY_D      2
-#  define KEY_LEFT   123
-#  define KEY_RIGHT  124
-
-#  define MASK_KEY_PRESS        0
-#  define MASK_KEY_RELEASE      0
-#  define MASK_BUTTON_PRESS     0
-#  define MASK_BUTTON_RELEASE   0
-#  define MASK_POINTER_MOTION   0
-#  define MASK_STRUCTURE_NOTIFY 0
+#  include "macos_keys.h"
+#  define OS_MACOS 1
 
 # elif __linux__
 
 #  include "mlx.h"
 #  include <X11/keysym.h>
 #  include <X11/X.h>
-
-#  define KEY_ESC    65307
-#  define KEY_W      119
-#  define KEY_A      97
-#  define KEY_S      115
-#  define KEY_D      100
-#  define KEY_LEFT   65361
-#  define KEY_RIGHT  65363
-
-#  define MASK_KEY_PRESS        0
-#  define MASK_KEY_RELEASE      1
-#  define MASK_BUTTON_PRESS     2
-#  define MASK_BUTTON_RELEASE   3
-#  define MASK_POINTER_MOTION   6
-#  define MASK_STRUCTURE_NOTIFY 17
+#  include "linux_keys.h"
+#  define OS_MACOS 0
 
 # else
 #  error "Unsupported operating system"
@@ -236,11 +210,7 @@
 /*                                      FUNCTIONS                             */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                            VALIDATE_FILE FUNCTIONS                         */
-/* ************************************************************************** */
-
-int		validate_file(bool cub, char *path);
+/*------------------------------ CLEANUP DIR ---------------------------------*/
 
 /* ************************************************************************** */
 /*                              CLEANUP FUNCTIONS                             */
@@ -262,6 +232,8 @@ int		print_error_msg_int(int detail, char *message, int code);
 
 void	clean_exit(t_engine *engine, int code);
 int		quit_cub3d(t_engine *engine);
+
+/*----------------------------- INITIALIZER DIR ------------------------------*/
 
 /* ************************************************************************** */
 /*                              INIT_ENGINE FUNCTIONS                         */
@@ -287,41 +259,7 @@ void	init_mlx(t_engine *engine);
 void	init_texture_info(t_texture_info *texinfo);
 void	init_textures(t_engine *engine);
 
-/* ************************************************************************** */
-/*                              INIT_DIRECTION FUNCTIONS                      */
-/* ************************************************************************** */
-
-void	init_player_direction_vectors(t_engine *engine);
-
-/* ************************************************************************** */
-/*                              MOVEMENT_COLLISION FUNCTIONS                  */
-/* ************************************************************************** */
-
-int		apply_player_movement(t_engine *engine, double new_x, double new_y);
-
-/* ************************************************************************** */
-/*                              ROTATION FUNCTIONS                            */
-/* ************************************************************************** */
-
-int		handle_player_rotation(t_engine *engine, double direction);
-
-/* ************************************************************************** */
-/*                              PLAYER_MOVEMENT FUNCTIONS                     */
-/* ************************************************************************** */
-
-int		update_player_movement(t_engine *engine);
-
-/* ************************************************************************** */
-/*                              INPUT_HANDLER FUNCTIONS                       */
-/* ************************************************************************** */
-
-void	register_input_hooks(t_engine *engine);
-
-/* ************************************************************************** */
-/*                              MAP_WALLS_VALIDATOR FUNCTIONS                 */
-/* ************************************************************************** */
-
-int		validate_map_walls(t_map_context *mapinfo, char **map);
+/*------------------------------ PARSER DIR ----------------------------------*/
 
 /* ************************************************************************** */
 /*                              MAP_UTILS FUNCTIONS                           */
@@ -337,11 +275,41 @@ size_t	get_max_map_line_length(t_map_context *mapinfo, int start);
 int		validate_map(t_engine *engine, char **map);
 
 /* ************************************************************************** */
+/*                              MAP_WALLS_VALIDATOR FUNCTIONS                 */
+/* ************************************************************************** */
+
+int		validate_map_walls(t_map_context *mapinfo, char **map);
+
+/* ************************************************************************** */
 /*                              PARSE_COLOR FUNCTIONS                         */
 /* ************************************************************************** */
 
 int		parse_floor_ceiling_color(t_engine *data,
 			t_texture_info *textures, char *line, int index);
+
+/* ************************************************************************** */
+/*                              PARSE_CONFIG FUNCTIONS                        */
+/* ************************************************************************** */
+
+int		get_file_data(t_engine *data, char **file);
+
+/* ************************************************************************** */
+/*                              PARSE_FILE_CONTENT FUNCTIONS                  */
+/* ************************************************************************** */
+
+void	load_cub_file(char *path, t_engine *data);
+
+/* ************************************************************************** */
+/*                              PARSE_MAP_LAYOUT FUNCTIONS                    */
+/* ************************************************************************** */
+
+int		parse_map_layout(t_engine *data, char **file, int start);
+
+/* ************************************************************************** */
+/*                            VALIDATE_FILE FUNCTIONS                         */
+/* ************************************************************************** */
+
+int		validate_file(bool cub, char *path);
 
 /* ************************************************************************** */
 /*                              VALIDATE_TEXTURES FUNCTIONS                   */
@@ -350,16 +318,52 @@ int		parse_floor_ceiling_color(t_engine *data,
 int		validate_textures_and_colors(t_engine *engine,
 			t_texture_info *textures);
 
-/* ************************************************************************** */
-/*                              MAP_WALLS_VALIDATOR FUNCTIONS                 */
-/* ************************************************************************** */
-
-int		validate_map_walls(t_map_context *mapinfo, char **map);
+/*-------------------------------- PLAYER DIR --------------------------------*/
 
 /* ************************************************************************** */
-/*                              PARSE_MAP_LAYOUT FUNCTIONS                    */
+/*                              INIT_DIRECTION FUNCTIONS                      */
 /* ************************************************************************** */
 
-int		parse_map_layout(t_engine *data, char **file, int start);
+void	init_player_direction_vectors(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              INPUT_HANDLER FUNCTIONS                       */
+/* ************************************************************************** */
+
+void	register_input_hooks(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              MOVEMENT_COLLISION FUNCTIONS                  */
+/* ************************************************************************** */
+
+int		apply_player_movement(t_engine *engine, double new_x, double new_y);
+
+/* ************************************************************************** */
+/*                              PLAYER_MOVEMENT FUNCTIONS                     */
+/* ************************************************************************** */
+
+int		update_player_movement(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              ROTATION FUNCTIONS                            */
+/* ************************************************************************** */
+
+int		handle_player_rotation(t_engine *engine, double direction);
+
+/* ************************************************************************** */
+/*                              DEBUG FUNCTIONS                               */
+/* ************************************************************************** */
+
+void	debug_display_minimap(t_minimap_ctx *minimap);
+void	debug_display_engine(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              MLX_PLATFORM FUNCTIONS                        */
+/* ************************************************************************** */
+
+void	mlx_platform_cleanup(void *mlx);
+void	mlx_center_mouse(t_engine *engine);
+void	mlx_move_mouse(t_engine *engine, int x, int y);
+
 
 #endif
