@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 15:24:51 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/30 17:02:24 by mbah             ###   ########.fr       */
+/*   Updated: 2026/01/31 14:19:40 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,14 +91,5 @@ void	init_mlx(t_engine *engine)
 		clean_exit(engine,
 			print_error_msg("mlx", ERROR_MLX_WIN, FAILURE));
 	if (BONUS)
-	{
-		if (!OS_MACOS)
-		{
-			mlx_mouse_move(
-				engine->mlx,
-				engine->win,
-				engine->win_width / 2,
-				engine->win_height / 2);
-		}
-	}
+		mlx_center_mouse(engine);
 }
