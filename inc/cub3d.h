@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:57:03 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/31 14:25:00 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/03 17:29:28 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -364,5 +364,46 @@ void	debug_display_engine(t_engine *engine);
 void	mlx_platform_cleanup(void *mlx);
 void	mlx_center_mouse(t_engine *engine);
 void	mlx_move_mouse(t_engine *engine, int x, int y);
+
+/*-------------------------------- RENDER DIR --------------------------------*/
+
+/* ************************************************************************** */
+/*                              MINIMAP_BUILDER FUNCTIONS                     */
+/* ************************************************************************** */
+
+void	render_minimap_overlay(t_engine *engine);
+
+/* ************************************************************************** */
+/*                              MINIMAP_IMAGE FUNCTIONS                       */
+/* ************************************************************************** */
+
+void	render_minimap(t_engine *engine, t_minimap *minimap);
+
+/* ************************************************************************** */
+/*                              MLX_IMAGE FUNCTIONS                           */
+/* ************************************************************************** */
+
+void	set_image_pixel(t_image *img, int color, int x, int y);
+
+/* ************************************************************************** */
+/*                           RAYCASTING_CORE FUNCTIONS                        */
+/* ************************************************************************** */
+
+int		perform_raycasting(t_player *player, t_engine *engine);
+
+/* ************************************************************************** */
+/*                           RENDER_FRAME FUNCTIONS                           */
+/* ************************************************************************** */
+
+int		render(t_engine *engine);
+void	render_images(t_engine *engine);
+
+/* ************************************************************************** */
+/*                           RENDER_TEXTURES FUNCTIONS                        */
+/* ************************************************************************** */
+
+void	render_wall_texture_column(t_engine *engine,
+			t_texture_info *tex, t_raycast *ray, int screen_x);
+void	init_texture_pixel_buffer(t_engine *engine);
 
 #endif
