@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 17:46:35 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/24 14:57:11 by mbah             ###   ########.fr       */
+/*   Updated: 2026/01/31 02:12:01 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,7 @@ void	clean_exit(t_engine *engine, int code)
 		exit(code);
 	if (engine->win && engine->mlx)
 		mlx_destroy_window(engine->mlx, engine->win);
-	if (engine->mlx)
-	{
-		if (OS_MACOS == 0)
-		{
-			mlx_destroy_display(engine->mlx);
-			mlx_loop_end(engine->mlx);
-			free(engine->mlx);
-		}
-		else
-		{
-			free(engine->mlx);
-		}
-	}
+	mlx_platform_cleanup(engine->mlx);
 	free_engine(engine);
 	exit(code);
 }
