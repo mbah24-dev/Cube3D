@@ -1,75 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    
-</head>
-<body>
-    <h1>cub3D</h1>
-    <p align="center">
-      <img src="https://github.com/mbah24-dev/mbah24-dev/blob/main/42_badges/cub3de.png" alt="Cub3D 42 project badge"/>
-    </p>
-    <p><strong>Author:</strong> BAH Mamadou</p>
-    <p><strong>Status:</strong> Student in common core at 42 School</p>
-    <h2>Project Overview</h2>
-    <p>
-        <em>cub3D</em> is a 42 school project that aims to develop a basic 3D game engine using the
-        <strong>raycasting technique</strong>, inspired by classic games such as Wolfenstein 3D.
-        The project is written in C and uses the <strong>MinilibX</strong> graphical library.
-    </p>
-    <h2>Features</h2>
-    <ul>
-        <li>Raycasting-based 3D rendering</li>
-        <li>Keyboard input handling for movement</li>
-        <li>Texture rendering for walls</li>
-        <li>Sprite rendering</li>
-        <li>Collision detection</li>
-    </ul>
-    <h2>Installation</h2>
-    <p>To compile and run the project, you need:</p>
-    <ul>
-        <li>Linux or macOS</li>
-        <li>GCC compiler</li>
-        <li>MinilibX library</li>
-    </ul>
-    <h2>Compilation</h2>
-    <p>Clone the repository and run the following commands in the terminal:</p>
-    <pre>
-    git clone &lt;your-repo-url&gt;
-    cd cub3D
-    make
-    </pre>
-    <h2>Usage</h2>
-    <p>After compilation, run the executable with a map file as argument:</p>
-    <pre>
-    ./cub3D maps/example.cub
-    </pre>
-    <p>Controls:</p>
-    <ul>
-        <li><strong>W</strong> - Move forward</li>
-        <li><strong>S</strong> - Move backward</li>
-        <li><strong>A</strong> - Turn left</li>
-        <li><strong>D</strong> - Turn right</li>
-        <li><strong>ESC</strong> - Exit the game</li>
-    </ul>
-    <h2>Project Structure</h2>
-    <ul>
-        <li><code>src/</code> - Source code files</li>
-        <li><code>includes/</code> - Header files</li>
-        <li><code>maps/</code> - Example map files</li>
-        <li><code>Makefile</code> - Build script</li>
-    </ul>
-    <h2>Documentation</h2>
-    <p>
-        All functions are documented using <strong>Doxygen</strong> style comments. You can generate
-        documentation by running:
-    </p>
-    <pre>
-    doxygen Doxyfile
-    </pre>
-    <h2>License</h2>
-    <p>This project is open-source and free to use for educational purposes.</p>
-    <h2>Contact</h2>
-    <p>If you have questions or suggestions, contact me: <strong>BAH Mamadou</strong></p>
-</body>
-</html>
+*This project has been created as part of the 42 curriculum by mbah.*
+
+# cub3D
+
+## Description
+
+**cub3D** is a graphical project inspired by *Wolfenstein 3D*, developed in C using the MiniLibX library.  
+The goal of the project is to create a simple 3D game engine using **raycasting**, allowing the player to navigate inside a maze described in a `.cub` configuration file.
+
+The engine renders a first-person view of the map, handles player movement and rotation, displays textured walls, and includes bonus features such as a minimap and mouse-based camera control.  
+The project also focuses heavily on **robust parsing**, **error handling**, and **memory safety**.
+
+This project was developed **entirely solo**.
+
+---
+
+## Features
+
+- Raycasting-based 3D rendering
+- Textured walls (N/S/E/W)
+- Player movement and rotation
+- Keyboard controls (W/A/S/D + arrows)
+- Cross-platform support (macOS & Linux)
+- Robust `.cub` file parser with detailed error handling
+- Minimap displaying nearby environment
+- Bonus features:
+  - Minimap overlay
+  - Mouse-based camera rotation
+  - Platform-specific MLX handling
+
+---
+
+## Instructions
+
+### Requirements
+
+- GCC
+- Make
+- MiniLibX (included in the repository)
+- macOS or Linux
+
+### Compilation
+
+Clone the repository and compile:
+
+```bash
+make
+```
+For bonus features:
+
+```bash
+make bonus
+```
+### Execution
+
+Run the program with a valid .cub map file:
+
+```bash
+./cub3D maps/good/dungeon.cub
+```
+
+### Controls
+
+
+### Action	Key
+Move forward ------> W
+
+Move backward -----> S
+
+Strafe left -------> A
+
+Strafe right ------> D
+
+Rotate camera -----> ← →
+
+Exit program ------> ESC
+
+Mouse movement can also be used for camera rotation (bonus).
+
+### Project Structure
+
+```text
+cub3D/
+├── inc/             # Headers and type definitions
+├── src/             # Source code
+│   ├── parser/      # File and map parsing
+│   ├── render/      # Raycasting and rendering
+│   ├── player/      # Movement and controls
+│   ├── initializer/ # Engine and MLX initialization
+│   ├── cleanup/     # Memory and resource management
+│   └── debug/       # Debug utilities
+├── maps/            # Test maps (valid and invalid)
+├── textures/        # Wall textures
+├── Lib/             # Libft
+├── minilibx-*       # MiniLibX (macOS & Linux)
+└── Makefile
+````
+## Resources
+
+### Raycasting & Graphics
+- **Lode Vandevenne – Raycasting Tutorial**  
+  https://lodev.org/cgtutor/raycasting.html
+
+- **Wolfenstein 3D Engine Breakdown**
+
+- **MiniLibX Documentation (42)**
+
+---
+
+### C & Systems Programming
+- **Linux man pages**
+- **GNU GCC Documentation**
+- **AddressSanitizer (ASan)**
+
+---
+
+## AI Usage
+
+AI tools (ChatGPT) were used **only as learning assistance**, specifically for:
+
+- Understanding raycasting theory and mathematics
+- Debugging memory errors using AddressSanitizer
+- Clarifying C concepts (bitwise operations, DDA algorithm, texture mapping)
+- Improving code structure and readability
+- Writing this README
+
+All code was **written, tested, and validated manually** by the author.  
+AI was **never used to generate complete source files**.
+
+---
+
+## Notes
+
+- The project strictly follows **42 coding standards**
+- Memory leaks and invalid accesses were checked using **AddressSanitizer**
+- Extensive error handling ensures invalid maps are properly rejected
+
+---
+
+## Author
+
+**mbah**  
+42 Network – *Cub3D Project*
