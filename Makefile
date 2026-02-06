@@ -6,7 +6,7 @@
 #    By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/22 15:26:36 by mbah              #+#    #+#              #
-#    Updated: 2026/02/03 17:17:59 by mbah             ###   ########.fr        #
+#    Updated: 2026/02/04 01:57:16 by mbah             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ else
 endif
 
 # ------------------------- LIBFT CONFIGURATION ------------------------- #
-LIBFT_PATH	= Lib/
+LIBFT_PATH	= lib/
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
@@ -78,6 +78,7 @@ SRC			= main.c \
 			  player/rotation.c \
 			  \
 			  render/mlx_image.c \
+			  render/project_menu.c \
 			  render/raycasting_core.c \
 			  render/render_textures.c \
 			  render/render_frame.c \
@@ -104,6 +105,12 @@ INC			= -I ./inc/ \
 			  -I $(LIBFT_PATH) \
 			  $(MLX_INC)
 
+HEADERS	= ./inc/cub3d.h \
+		  ./inc/linux_keys.h \
+		  ./inc/macos_keys.h \
+		  ./inc/types.h \
+		  ./lib/libft.h
+
 # ------------------------- BUILD RULES -------------------------------- #
 all: $(OBJ_PATH) $(MLX) $(LIBFT) $(NAME)
 
@@ -122,7 +129,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	$(CC) $(CFLAGS) -DBONUS=$(BONUS) -DOS_MACOS=$(OS_MACOS) -c $< -o $@ $(INC)
 
 # Link program
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADERS)
 	$(CC) $(CFLAGS) -DBONUS=$(BONUS) -DOS_MACOS=$(OS_MACOS) $(OBJS) -o $@ $(INC) $(LIBFT) $(MLX_FLAGS)
 
 # Build libft
@@ -135,6 +142,7 @@ $(MLX):
 
 # ------------------------- BONUS -------------------------------------- #
 bonus:
+	$(MAKE) fclean
 	$(MAKE) all BONUS=1
 
 # ------------------------- CLEANING ----------------------------------- #
