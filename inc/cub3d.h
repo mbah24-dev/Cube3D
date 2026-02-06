@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 15:57:03 by mbah              #+#    #+#             */
-/*   Updated: 2026/02/03 17:29:28 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/04 01:52:48 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -377,13 +377,19 @@ void	render_minimap_overlay(t_engine *engine);
 /*                              MINIMAP_IMAGE FUNCTIONS                       */
 /* ************************************************************************** */
 
-void	render_minimap(t_engine *engine, t_minimap *minimap);
+void	render_minimap_image(t_engine *engine, t_minimap_ctx *minimap);
 
 /* ************************************************************************** */
 /*                              MLX_IMAGE FUNCTIONS                           */
 /* ************************************************************************** */
 
 void	set_image_pixel(t_image *img, int color, int x, int y);
+
+/* ************************************************************************** */
+/*                           PROJECT_MENU FUNCTIONS                          */
+/* ************************************************************************** */
+
+void	draw_cub3d_menu(t_engine *engine);
 
 /* ************************************************************************** */
 /*                           RAYCASTING_CORE FUNCTIONS                        */
