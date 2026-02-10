@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 00:40:32 by mbah              #+#    #+#             */
-/*   Updated: 2026/02/03 17:14:47 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/10 16:14:14 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ void	render_minimap_overlay(t_engine *engine)
 		print_error_msg(NULL, ERROR_MALLOC, 0);
 		return ;
 	}
-	debug_display_minimap(&minimap);
 	render_minimap_image(engine, &minimap);
 	free_2d_array((void **)minimap.map);
 }

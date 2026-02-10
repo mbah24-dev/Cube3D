@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 17:32:58 by mbah              #+#    #+#             */
-/*   Updated: 2026/02/03 17:11:06 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/10 16:14:24 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	main(int argc, char **argv)
 	init_textures(&engine);
 	render_images(&engine);
 	register_input_hooks(&engine);
-	debug_display_engine(&engine);
 	mlx_loop_hook(engine.mlx, render, &engine);
 	mlx_loop(engine.mlx);
 	return (0);

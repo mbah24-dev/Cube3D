@@ -6,7 +6,7 @@
 #    By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/22 15:26:36 by mbah              #+#    #+#              #
-#    Updated: 2026/02/04 01:57:16 by mbah             ###   ########.fr        #
+#    Updated: 2026/02/10 16:09:49 by mbah             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ OS_MACOS	= 0
 
 # ------------------------- COMPILER SETTINGS --------------------------- #
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 # ------------------------- OS DETECTION & MLX -------------------------- #
 UNAME	= $(shell uname)
