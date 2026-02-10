@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 17:32:58 by mbah              #+#    #+#             */
-/*   Updated: 2026/02/10 16:14:24 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/10 16:40:40 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	t_engine	engine;
 
 	if (argc != 2)
-		return (print_error_msg("Usage", ERROR_USAGE, FAILURE));
+		return (print_error_msg(NULL, ERROR_USAGE, FAILURE));
 	init_engine(&engine);
 	if (parse_args(argv, &engine) != 0)
 		return (FAILURE);

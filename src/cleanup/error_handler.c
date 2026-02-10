@@ -6,7 +6,7 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/22 17:47:17 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/24 14:59:05 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/10 16:38:05 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,15 @@
 */
 int	print_error_msg(char *detail, char *message, int code)
 {
-	ft_putstr_fd("cub3D: Error", 2);
+	ft_putstr_fd("Error\n", 2);
 	if (detail)
 	{
-		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(detail, 2);
+		if (message)
+			ft_putstr_fd(": ", 2);
 	}
 	if (message)
-	{
-		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(message, 2);
-	}
 	ft_putstr_fd("\n", 2);
 	return (code);
 }
@@ -65,7 +63,7 @@ int	print_error_msg(char *detail, char *message, int code)
 */
 int	print_error_msg_int(int detail, char *message, int code)
 {
-	ft_putstr_fd("cub3D: Error: ", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putnbr_fd(detail, 2);
 	if (message)
 	{

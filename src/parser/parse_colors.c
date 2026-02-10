@@ -6,26 +6,28 @@
 /*   By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/30 00:35:55 by mbah              #+#    #+#             */
-/*   Updated: 2026/01/31 14:17:49 by mbah             ###   ########.fr       */
+/*   Updated: 2026/02/10 17:08:56 by mbah             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /**
- * @brief Checks whether a string contains no digit characters.
+ * @brief Checks whether a string is composed only of digits.
  *
  * @param str The string to check.
- * @return true if no digit is found, false otherwise.
+ * @return true if all characters are digits, false otherwise.
  */
-static bool	contains_no_digit(char *str)
+static bool	is_strict_digit_str(char *str)
 {
 	int	i;
 
+	if (!str || !str[0])
+		return (false);
 	i = 0;
 	while (str[i])
 	{
-		if (ft_isdigit(str[i]))
+		if (!ft_isdigit(str[i]))
 			return (false);
 		i++;
 	}
@@ -42,6 +44,25 @@ static bool	contains_no_digit(char *str)
  * @param rgb Destination integer array.
  * @return The filled RGB array on success, NULL on failure.
  */
+static int	parse_rgb_value(char *part, int *out)
+{
+	char	*trimmed;
+
+	trimmed = ft_strtrim(part, " \t\r\n\v\f");
+	if (!trimmed)
+		return (0);
+	if (!is_strict_digit_str(trimmed))
+	{
+		free(trimmed);
+		return (0);
+	}
+	*out = ft_atoi(trimmed);
+	free(trimmed);
+	if (*out < 0)
+		return (0);
+	return (1);
+}
+
 static int	*parse_rgb_values(char **rgb_parts, int *rgb)
 {
 	int	i;
@@ -49,8 +70,7 @@ static int	*parse_rgb_values(char **rgb_parts, int *rgb)
 	i = 0;
 	while (rgb_parts[i])
 	{
-		rgb[i] = ft_atoi(rgb_parts[i]);
-		if (rgb[i] < 0 || contains_no_digit(rgb_parts[i]))
+		if (!parse_rgb_value(rgb_parts[i], &rgb[i]))
 		{
 			free_2d_array((void **)rgb_parts);
 			free(rgb);
