@@ -6,7 +6,7 @@
 #    By: mbah <mbah@student.42lyon.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/22 15:26:36 by mbah              #+#    #+#              #
-#    Updated: 2026/02/10 16:09:49 by mbah             ###   ########.fr        #
+#    Updated: 2026/02/11 13:15:41 by mbah             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ else
 endif
 
 # ------------------------- LIBFT CONFIGURATION ------------------------- #
-LIBFT_PATH	= lib/
+LIBFT_PATH	= lib/ 
 LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
