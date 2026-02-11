@@ -20,7 +20,7 @@ OS_MACOS	= 0
 
 # ------------------------- COMPILER SETTINGS --------------------------- #
 CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror -g3 #-fsanitize=address
+CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 # ------------------------- OS DETECTION & MLX -------------------------- #
 UNAME	= $(shell uname)
@@ -142,7 +142,7 @@ $(MLX):
 
 # ------------------------- BONUS -------------------------------------- #
 bonus:
-	$(MAKE) fclean
+	
 	$(MAKE) all BONUS=1
 
 # ------------------------- CLEANING ----------------------------------- #
