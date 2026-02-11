@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-C_FLAGS = -Wall -Werror -Wextra -I ./
+C_FLAGS = -Wall -Werror -Wextra -I ./ -fPIE
 CC = cc
 
 NAME = libft.a
