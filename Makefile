@@ -19,7 +19,7 @@ BONUS	= 0
 OS_MACOS	= 0
 
 # ------------------------- COMPILER SETTINGS --------------------------- #
-CC		= gcc
+CC		= cc
 CFLAGS	= -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 # ------------------------- OS DETECTION & MLX -------------------------- #
