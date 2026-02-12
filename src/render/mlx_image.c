@@ -19,3 +19,19 @@ void	set_image_pixel(t_image *img, int color, int x, int y)
 	pixel = y * (img->size_line / 4) + x;
 	img->addr[pixel] = color;
 }
+
+/**
+ * @brief Render all visible elements.
+ *
+ * Includes the 3D scene and bonus elements if enabled.
+ *
+ * @param engine Pointer to engine context.
+ */
+void	render_images(t_engine *engine)
+{
+	render_3d_scene(engine);
+	if (BONUS)
+	{
+		draw_cub3d_menu(engine);
+	}
+}

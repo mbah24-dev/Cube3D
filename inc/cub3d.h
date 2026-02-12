@@ -125,7 +125,7 @@
 
 # define MINIMAP_PIXEL_SIZE 128
 # define MINIMAP_VIEW_DIST 4
-# define MINIMAP_COLOR_PLAYER 0x00FF00
+# define MINIMAP_COLOR_PLAYER 0xF00F0F
 # define MINIMAP_COLOR_WALL 0x808080
 # define MINIMAP_COLOR_FLOOR 0xE6E6E6
 # define MINIMAP_COLOR_SPACE 0x404040
@@ -267,6 +267,7 @@ void	init_textures(t_engine *engine);
 
 int		is_blank(char c);
 size_t	get_max_map_line_length(t_map_context *mapinfo, int start);
+int		line_contains_exactly_two_commas(char *line);
 
 /* ************************************************************************** */
 /*                              MAP_VALIDATION FUNCTIONS                      */
@@ -371,7 +372,9 @@ void	mlx_move_mouse(t_engine *engine, int x, int y);
 /*                              MINIMAP_BUILDER FUNCTIONS                     */
 /* ************************************************************************** */
 
-void	render_minimap_overlay(t_engine *engine);
+void	render_minimap_overlay(t_engine *engine, t_image *frame);
+void	render_minimap_image_into_frame(t_engine *engine, t_image *frame,
+			t_minimap_ctx *minimap);
 
 /* ************************************************************************** */
 /*                              MINIMAP_IMAGE FUNCTIONS                       */
@@ -382,7 +385,7 @@ void	render_minimap_image(t_engine *engine, t_minimap_ctx *minimap);
 /* ************************************************************************** */
 /*                              MLX_IMAGE FUNCTIONS                           */
 /* ************************************************************************** */
-
+void	render_3d_scene(t_engine *engine);
 void	set_image_pixel(t_image *img, int color, int x, int y);
 
 /* ************************************************************************** */

@@ -12,130 +12,104 @@
 
 #include "cub3d.h"
 
-/**
- * @brief Fill a minimap tile with a single color.
- *
- * Draws a square tile of size tile_size x tile_size
- * at the given pixel coordinates.
- *
- * @param minimap Pointer to the minimap structure.
- * @param px X pixel position.
- * @param py Y pixel position.
- * @param color Tile color.
- */
-static void	fill_minimap_tile(t_minimap_ctx *minimap, int px, int py, int color)
-{
-	int	i;
-	int	j;
+static void	draw_minimap_border_into_frame(t_image *frame,
+				t_minimap_ctx *minimap);
 
+static void	fill_minimap_tile_into_frame(t_image *frame,
+		t_minimap_ctx *minimap, int x_idx, int y_idx)
+{
+	int	px;
+	int	py;
+	int	i;
+	int	color;
+
+	px = minimap->draw_off_x + x_idx * minimap->tile_size;
+	py = minimap->draw_off_y + y_idx * minimap->tile_size;
+	if (minimap->map[y_idx][x_idx] == 'P')
+		color = MINIMAP_COLOR_PLAYER;
+	else if (minimap->map[y_idx][x_idx] == '1')
+		color = MINIMAP_COLOR_WALL;
+	else if (minimap->map[y_idx][x_idx] == '0')
+		color = MINIMAP_COLOR_FLOOR;
+	else
+		color = MINIMAP_COLOR_SPACE;
 	i = 0;
-	while (i < minimap->tile_size)
+	while (i < minimap->tile_size * minimap->tile_size)
 	{
-		j = 0;
-		while (j < minimap->tile_size)
-		{
-			set_image_pixel(minimap->img, color, px + j, py + i);
-			j++;
-		}
+		set_image_pixel(frame, color,
+			px + (i % minimap->tile_size), py + (i / minimap->tile_size));
 		i++;
 	}
 }
 
-/**
- * @brief Render a single minimap tile based on map content.
- *
- * @param minimap Pointer to the minimap structure.
- * @param x Tile X index.
- * @param y Tile Y index.
- */
-static void	render_minimap_tile(t_minimap_ctx *minimap, int x, int y)
+static void	render_minimap_row_into_frame(t_image *frame,
+		t_minimap_ctx *minimap, int y)
 {
-	int	px;
-	int	py;
-
-	px = x * minimap->tile_size;
-	py = y * minimap->tile_size;
-	if (minimap->map[y][x] == 'P')
-		fill_minimap_tile(minimap, px, py, MINIMAP_COLOR_PLAYER);
-	else if (minimap->map[y][x] == '1')
-		fill_minimap_tile(minimap, px, py, MINIMAP_COLOR_WALL);
-	else if (minimap->map[y][x] == '0')
-		fill_minimap_tile(minimap, px, py, MINIMAP_COLOR_FLOOR);
-	else if (minimap->map[y][x] == ' ')
-		fill_minimap_tile(minimap, px, py, MINIMAP_COLOR_SPACE);
-}
-
-/**
- * @brief Draw the minimap border.
- *
- * @param minimap Pointer to the minimap structure.
- * @param color Border color.
- */
-static void	draw_minimap_border(t_minimap_ctx *minimap, int color)
-{
-	int	size;
 	int	x;
-	int	y;
 
-	size = MINIMAP_PIXEL_SIZE + minimap->tile_size;
-	y = 0;
-	while (y < size)
+	x = 0;
+	while (x < minimap->size)
 	{
-		x = 0;
-		while (x < size)
-		{
-			if (x < 5 || x > size - 5 || y < 5 || y > size - 5)
-				set_image_pixel(minimap->img, color, x, y);
-			x++;
-		}
-		y++;
+		if (!minimap->map[y] || !minimap->map[y][x])
+			break ;
+		fill_minimap_tile_into_frame(frame, minimap, x, y);
+		x++;
 	}
 }
 
-/**
- * @brief Render the entire minimap grid.
- *
- * @param minimap Pointer to the minimap structure.
- */
-static void	render_minimap_grid(t_minimap_ctx *minimap)
+static void	render_minimap_grid_into_frame(t_image *frame,
+		t_minimap_ctx *minimap)
 {
-	int	x;
 	int	y;
 
 	y = 0;
 	while (y < minimap->size)
 	{
-		x = 0;
-		while (x < minimap->size)
-		{
-			if (!minimap->map[y] || !minimap->map[y][x])
-				break ;
-			render_minimap_tile(minimap, x, y);
-			x++;
-		}
+		render_minimap_row_into_frame(frame, minimap, y);
 		y++;
 	}
-	draw_minimap_border(minimap, MINIMAP_COLOR_SPACE);
+	draw_minimap_border_into_frame(frame, minimap);
+}
+
+static void	draw_minimap_border_into_frame(t_image *frame,
+		t_minimap_ctx *minimap)
+{
+	int	size;
+	int	ry;
+	int	rx;
+
+	size = MINIMAP_PIXEL_SIZE + minimap->tile_size;
+	ry = 0;
+	while (ry < size)
+	{
+		rx = 0;
+		while (rx < size)
+		{
+			if (rx < 5 || rx > size - 5 || ry < 5 || ry > size - 5)
+				set_image_pixel(frame, MINIMAP_COLOR_SPACE,
+					minimap->draw_off_x + rx, minimap->draw_off_y + ry);
+			rx++;
+		}
+		ry++;
+	}
 }
 
 /**
- * @brief Render and display the minimap image.
+ * @brief Render the minimap into the provided frame image.
  *
- * Creates the minimap image, renders its content,
- * displays it on screen, and destroys the image.
- *
- * @param data Pointer to the main data structure.
- * @param minimap Pointer to the minimap structure.
+ * @param engine Pointer to engine.
+ * @param frame Target frame image where the minimap will be drawn.
+ * @param minimap Minimapa context (map/grid already computed).
  */
-void	render_minimap_image(t_engine *engine, t_minimap_ctx *minimap)
+void	render_minimap_image_into_frame(t_engine *engine, t_image *frame,
+		t_minimap_ctx *minimap)
 {
-	int	img_size;
+	int	off_x;
+	int	off_y;
 
-	img_size = MINIMAP_PIXEL_SIZE + minimap->tile_size;
-	init_image_mlx(engine, &engine->minimap, img_size, img_size);
-	render_minimap_grid(minimap);
-	mlx_put_image_to_window(engine->mlx, engine->win, engine->minimap.img,
-		engine->win_width - (MINIMAP_PIXEL_SIZE + (minimap->tile_size * 2)),
-		minimap->tile_size);
-	mlx_destroy_image(engine->mlx, engine->minimap.img);
+	off_x = engine->win_width - (MINIMAP_PIXEL_SIZE + (minimap->tile_size * 2));
+	off_y = minimap->tile_size;
+	minimap->draw_off_x = off_x;
+	minimap->draw_off_y = off_y;
+	render_minimap_grid_into_frame(frame, minimap);
 }

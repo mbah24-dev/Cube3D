@@ -13,9 +13,9 @@
 #ifndef LINUX_KEYS_H
 # define LINUX_KEYS_H
 
-# define MOUSE_CLICK_RIGHT  -1
-# define MOUSE_CLICK_MIDDLE -1
-# define MOUSE_CLICK_LEFT   -1
+# define MOUSE_CLICK_RIGHT  3
+# define MOUSE_CLICK_MIDDLE 2
+# define MOUSE_CLICK_LEFT   1
 # define MOUSE_WHEEL_DOWN   5
 # define MOUSE_WHEEL_UP     4
 
@@ -34,11 +34,11 @@
 # define KEY_LEFT   65361
 # define KEY_RIGHT  65363
 
-# define MASK_KEY_PRESS        0
-# define MASK_KEY_RELEASE      1
-# define MASK_BUTTON_PRESS     2
-# define MASK_BUTTON_RELEASE   3
-# define MASK_POINTER_MOTION   6
-# define MASK_STRUCTURE_NOTIFY 17
+# define MASK_KEY_PRESS        KeyPressMask
+# define MASK_KEY_RELEASE      KeyReleaseMask
+# define MASK_BUTTON_PRESS     ButtonPressMask
+# define MASK_BUTTON_RELEASE   ButtonReleaseMask
+# define MASK_POINTER_MOTION   PointerMotionMask
+# define MASK_STRUCTURE_NOTIFY StructureNotifyMask
 
 #endif

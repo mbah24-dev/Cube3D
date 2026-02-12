@@ -101,6 +101,8 @@ typedef struct s_minimap_ctx
 	int		offset_y;
 	int		view_dist;
 	int		tile_size;
+	int		draw_off_x;
+	int		draw_off_y;
 }	t_minimap_ctx;
 
 /**

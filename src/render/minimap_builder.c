@@ -123,12 +123,11 @@ static char	**build_minimap_grid(t_engine *engine, t_minimap_ctx *minimap)
  *
  * @param data Pointer to global data.
  */
-void	render_minimap_overlay(t_engine *engine)
+void	render_minimap_overlay(t_engine *engine, t_image *frame)
 {
 	t_minimap_ctx	minimap;
 
 	minimap.map = NULL;
-	minimap.img = &engine->minimap;
 	minimap.view_dist = MINIMAP_VIEW_DIST;
 	minimap.size = (2 * minimap.view_dist) + 1;
 	minimap.tile_size = MINIMAP_PIXEL_SIZE / (2 * minimap.view_dist);
@@ -142,6 +141,6 @@ void	render_minimap_overlay(t_engine *engine)
 		print_error_msg(NULL, ERROR_MALLOC, 0);
 		return ;
 	}
-	render_minimap_image(engine, &minimap);
+	render_minimap_image_into_frame(engine, frame, &minimap);
 	free_2d_array((void **)minimap.map);
 }

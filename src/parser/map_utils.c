@@ -56,3 +56,23 @@ size_t	get_max_map_line_length(t_map_context *mapinfo, int start)
 	}
 	return (max_length);
 }
+
+int	line_contains_exactly_two_commas(char *line)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	if (!line)
+		return (0);
+	while (line[i])
+	{
+		if (line[i] == ',')
+			count++;
+		i++;
+	}
+	if (count == 2)
+		return (1);
+	return (0);
+}

@@ -44,6 +44,14 @@ static void	draw_frame_pixel(
  *
  * @param engine Pointer to engine context.
  */
+static void	present_frame(t_engine *engine, t_image *frame)
+{
+	if (BONUS)
+		render_minimap_overlay(engine, frame);
+	mlx_put_image_to_window(engine->mlx, engine->win, frame->img, 0, 0);
+	mlx_destroy_image(engine->mlx, frame->img);
+}
+
 static void	render_frame_image(t_engine *engine)
 {
 	t_image	frame;
@@ -64,8 +72,7 @@ static void	render_frame_image(t_engine *engine)
 		}
 		y++;
 	}
-	mlx_put_image_to_window(engine->mlx, engine->win, frame.img, 0, 0);
-	mlx_destroy_image(engine->mlx, frame.img);
+	present_frame(engine, &frame);
 }
 
 /**
@@ -76,29 +83,12 @@ static void	render_frame_image(t_engine *engine)
  *
  * @param engine Pointer to engine context.
  */
-static void	render_3d_scene(t_engine *engine)
+void	render_3d_scene(t_engine *engine)
 {
 	init_texture_pixel_buffer(engine);
 	init_raycast(&engine->ray);
 	perform_raycasting(&engine->player, engine);
 	render_frame_image(engine);
-}
-
-/**
- * @brief Render all visible elements.
- *
- * Includes the 3D scene and bonus elements if enabled.
- *
- * @param engine Pointer to engine context.
- */
-void	render_images(t_engine *engine)
-{
-	render_3d_scene(engine);
-	if (BONUS)
-	{
-		draw_cub3d_menu(engine);
-		render_minimap_overlay(engine);
-	}
 }
 
 /**

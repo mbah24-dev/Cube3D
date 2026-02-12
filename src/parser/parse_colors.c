@@ -96,6 +96,8 @@ static int	*extract_rgb_from_line(char *line)
 	int		*rgb;
 	int		count;
 
+	if (!line_contains_exactly_two_commas(line))
+		return (NULL);
 	rgb_parts = ft_split(line, ',');
 	count = 0;
 	while (rgb_parts[count])

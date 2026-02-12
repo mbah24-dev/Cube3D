@@ -37,6 +37,8 @@ void	clean_exit(t_engine *engine, int code)
 		exit(code);
 	if (engine->win && engine->mlx)
 		mlx_destroy_window(engine->mlx, engine->win);
+	if (engine->minimap.img && engine->mlx)
+		mlx_destroy_image(engine->mlx, engine->minimap.img);
 	mlx_platform_cleanup(engine->mlx);
 	free_engine(engine);
 	exit(code);
