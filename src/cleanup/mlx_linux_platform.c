@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* This file contains Linux-specific implementations of the MLX functions for
+ * cleaning up the MLX context and handling mouse movement. */
+
 #include "cub3d.h"
 
 void	mlx_platform_cleanup(void *mlx)

@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file validate_textures.c
+ * @brief Functions to validate texture paths and RGB color values.
+ */
 #include "cub3d.h"
 
 /**

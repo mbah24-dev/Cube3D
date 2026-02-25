@@ -10,8 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file init_engine.c
+ * @brief Initializes all components of the cub3D engine to default values.
+ */
+
 #include "cub3d.h"
 
+/**
+ * @brief Initialize the image structure to default values.
+ *
+ * Sets all fields of the t_image structure to NULL or zero.
+ *
+ * @param img Pointer to the image structure to initialize.
+ */
 void	init_image(t_image *img)
 {
 	img->img = NULL;
@@ -21,6 +33,13 @@ void	init_image(t_image *img)
 	img->endian = 0;
 }
 
+/**
+ * @brief Initialize the raycasting structure to default values.
+ *
+ * Sets all fields of the t_raycast structure to zero or default states.
+ *
+ * @param ray Pointer to the raycasting structure to initialize.
+ */
 void	init_raycast(t_raycast *ray)
 {
 	ray->camera_x = 0.0;
@@ -42,6 +61,13 @@ void	init_raycast(t_raycast *ray)
 	ray->draw_end = 0;
 }
 
+/**
+ * @brief Initialize the map context structure to default values.
+ *
+ * Sets all fields of the t_map_context structure to zero or default states.
+ *
+ * @param map Pointer to the map context structure to initialize.
+ */
 static void	init_map_context(t_map_context *map)
 {
 	map->fd = -1;
@@ -53,6 +79,13 @@ static void	init_map_context(t_map_context *map)
 	map->index_end_of_map = 0;
 }
 
+/**
+ * @brief Initialize the player structure to default values.
+ *
+ * Sets all fields of the t_player structure to zero or default states.
+ *
+ * @param player Pointer to the player structure to initialize.
+ */
 static void	init_player(t_player *player)
 {
 	player->dir = '\0';
@@ -68,6 +101,13 @@ static void	init_player(t_player *player)
 	player->rotate = 0;
 }
 
+/**
+ * @brief Initialize the main engine structure to default values.
+ *
+ * Sets all fields of the t_engine structure to NULL, zero, or default states.
+ *
+ * @param engine Pointer to the main engine structure to initialize.
+ */
 void	init_engine(t_engine *engine)
 {
 	engine->mlx = NULL;

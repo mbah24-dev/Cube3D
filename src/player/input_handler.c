@@ -10,6 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file input_handler.c
+ * @brief Handles keyboard and mouse input 
+ * for player movement and rotation.
+ *
+ * This file contains functions to process 
+ * key press and release events to update
+ * the player's movement and rotation state. 
+ * It also includes logic to handle
+ * mouse motion for camera rotation, 
+ * with horizontal wrapping to allow infinite
+ * rotation without hitting window edges.
+ */
 #include "cub3d.h"
 
 /**

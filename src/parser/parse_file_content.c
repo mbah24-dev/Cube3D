@@ -10,6 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file parse_file_content.c
+ * @brief Functions to read the .cub file content into memory.
+ *
+ * This file contains functions to count the number of lines in the .cub file,
+ * allocate memory for storing the file content, and read each line into an
+ * array of strings for later parsing of textures, colors, and map layout.
+ */
+
 #include "cub3d.h"
 
 /**

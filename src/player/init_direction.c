@@ -10,6 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file init_direction.c
+ * @brief Initializes the player's direction and camera plane 
+ * vectors based on the starting orientation.
+ *
+ * This file contains functions to set the player's 
+ * initial direction and camera plane
+ * vectors according to the direction character ('N', 'S', 'E', 'W') 
+ * specified in the player structure. 
+ * These vectors are essential for the raycasting algorithm to render
+ * the 3D view correctly.
+ */
 #include "cub3d.h"
 
 /**

@@ -10,6 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file map_walls_validator.c
+ * @brief Functions to validate that the map is properly enclosed by walls.
+ *
+ * This file contains functions to check that the map is fully surrounded
+ * by '1' characters, ensuring that the player cannot exit the map boundaries.
+ */
+
 #include "cub3d.h"
 
 /**

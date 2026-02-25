@@ -10,6 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file map_validation.c
+ * @brief Functions to validate the map structure and 
+ * player position for the cub3D engine.
+ */
+
 #include "cub3d.h"
 
 /**
@@ -87,7 +93,7 @@ static int	validate_player_enclosure(t_engine *engine, char **map)
  *
  * Converts the player character ('N', 'S', 'E', 'W') into a numeric position
  * centered inside its tile and replaces the map cell with '0'.
- *
+ * @note y_x[0] = y coordinate, y_x[1] = x coordinate
  * @param engine Pointer to the main engine structure.
  * @param map 2D array representing the map.
  * @return SUCCESS if valid, FAILURE otherwise.

@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file init_mlx.c
+ * @brief Initializes the MiniLibX context, creates the main window,
+ * and loads texture images for the cub3D engine.
+ */
 #include "cub3d.h"
 
 /**

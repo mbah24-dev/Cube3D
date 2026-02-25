@@ -1,4 +1,4 @@
-*This project has been created as part of the 42 curriculum by mbah.*
+*This project has been created as part of the 42 curriculum by mbah and yahennac.*
 
 # cub3D
 
@@ -10,7 +10,7 @@ The goal of the project is to create a simple 3D game engine using **raycasting*
 The engine renders a first-person view of the map, handles player movement and rotation, displays textured walls, and includes bonus features such as a minimap and mouse-based camera control.  
 The project also focuses heavily on **robust parsing**, **error handling**, and **memory safety**.
 
-This project was developed **entirely solo**.
+This project was developed by **mbah** and **yahennac**.
 
 ---
 
@@ -139,5 +139,5 @@ AI was **never used to generate complete source files**.
 
 ## Author
 
-**mbah**  
+**mbah** and **yahennac** 
 42 Network – *Cub3D Project*

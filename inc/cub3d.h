@@ -97,7 +97,7 @@
 #  define O_DIRECTORY 00200000
 # endif
 
-# define MOVESPEED 0.0125
+# define MOVESPEED 0.0225
 # define ROTSPEED 0.015
 
 /**
@@ -135,76 +135,76 @@
 /* ************************************************************************** */
 
 # define ERROR_USAGE \
-"Utilisation : ./cub3D <chemin/vers/map.cub>"
+"Usage: ./cub3D <map.cub>"
 
 # define ERROR_FILE_NOT_CUB \
-"Le fichier fourni n'a pas l'extension .cub"
+"Invalid file extension (.cub required)"
 
 # define ERROR_FILE_NOT_XPM \
-"Le fichier fourni n'a pas l'extension .xpm"
+"Invalid texture extension (.xpm required)"
 
 # define ERROR_FILE_IS_DIR \
-"Le chemin fourni correspond à un dossier"
+"Path is a directory"
 
 # define ERROR_FLOOR_CEILING \
-"Couleurs du sol et/ou du plafond invalides"
+"Invalid floor/ceiling colors"
 
 # define ERROR_COLOR_FLOOR \
-"Couleur du sol invalide"
+"Invalid floor color"
 
 # define ERROR_COLOR_CEILING \
-"Couleur du plafond invalide"
+"Invalid ceiling color"
 
 # define ERROR_INVALID_MAP \
-"Description de la carte incorrecte ou incomplète"
+"Invalid map"
 
 # define ERROR_INV_LETTER \
-"Caractère invalide détecté dans la carte"
+"Invalid character in map"
 
 # define ERROR_NUM_PLAYER \
-"La carte contient plus d'une position de joueur"
+"Multiple player positions"
 
 # define ERROR_TEX_RGB_VAL \
-"Valeur RGB invalide (doit être comprise entre 0 et 255)"
+"RGB value out of range (0-255)"
 
 # define ERROR_TEX_MISSING \
-"Texture(s) manquante(s)"
+"Missing texture"
 
 # define ERROR_TEX_INVALID \
-"Texture(s) invalide(s)"
+"Invalid texture"
 
 # define ERROR_COLOR_MISSING \
-"Couleur(s) manquante(s)"
+"Missing color"
 
 # define ERROR_MAP_MISSING \
-"Carte manquante dans le fichier"
+"Missing map"
 
 # define ERROR_MAP_TOO_SMALL \
-"La carte doit contenir au minimum 3 lignes"
+"Map too small (min 3 lines)"
 
 # define ERROR_MAP_NO_WALLS \
-"La carte n'est pas entièrement entourée de murs"
+"Map not closed by walls"
 
 # define ERROR_MAP_LAST \
-"La carte doit être le dernier élément du fichier"
+"Map must be last in file"
 
 # define ERROR_PLAYER_POS \
-"Position du joueur invalide"
+"Invalid player position"
 
 # define ERROR_PLAYER_DIR \
-"Aucune position de joueur trouvée (N, S, E ou W attendue)"
+"No player position found (N/S/E/W)"
 
 # define ERROR_MALLOC \
-"Échec de l'allocation mémoire"
+"Malloc failed"
 
 # define ERROR_MLX_START \
-"Impossible d'initialiser la MiniLibX"
+"MLX init failed"
 
 # define ERROR_MLX_WIN \
-"Impossible de créer la fenêtre graphique"
+"Window creation failed"
 
 # define ERROR_MLX_IMG \
-"Impossible de créer l'image graphique"
+"Image creation failed"
 
 /* ************************************************************************** */
 /*                                      FUNCTIONS                             */

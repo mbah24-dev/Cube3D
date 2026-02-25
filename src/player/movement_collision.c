@@ -10,6 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file movement_collision.c
+ * @brief Handles player movement with collision detection 
+ * against walls and map boundaries.
+ *
+ * This file contains functions to validate player movement 
+ * by checking for wall collisions and ensuring the player 
+ * stays within the map boundaries. 
+ * The logic differs based on whether the BONUS mode is enabled,
+ * allowing for more precise
+ * collision detection in the bonus version of the project.
+ */
+
 #include "cub3d.h"
 
 /**
@@ -84,18 +97,18 @@ static bool	can_move_to_position(t_engine *engine, double x, double y)
  */
 int	apply_player_movement(t_engine *engine, double new_x, double new_y)
 {
-	int	moved;
+	int	ret;
 
-	moved = 0;
+	ret = 0;
 	if (can_move_to_position(engine, new_x, engine->player.pos_y))
 	{
 		engine->player.pos_x = new_x;
-		moved = 1;
+		ret = 1;
 	}
 	if (can_move_to_position(engine, engine->player.pos_x, new_y))
 	{
 		engine->player.pos_y = new_y;
-		moved = 1;
+		ret = 1;
 	}
-	return (moved);
+	return (ret);
 }

@@ -10,6 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file rotation.c
+ * @brief Handles player rotation based on input state.
+ *
+ * This file contains functions to rotate the player's view left or right
+ * by applying a 2D rotation to the player's direction and camera plane vectors.
+ */
+
 #include "cub3d.h"
 
 /**

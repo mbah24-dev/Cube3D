@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file map_utils.c
+ * @brief Utility functions for map parsing and validation in the cub3D engine.
+ */
+
 #include "cub3d.h"
 
 /**
@@ -57,6 +62,16 @@ size_t	get_max_map_line_length(t_map_context *mapinfo, int start)
 	return (max_length);
 }
 
+/**
+ * @brief Check if a line contains exactly two commas.
+ *
+ * This function counts the number of comma characters in the given line
+ * and returns true if there are exactly two, which is expected for RGB
+ * color definitions in the map file.
+ *
+ * @param line The string to check.
+ * @return 1 if the line contains exactly two commas, 0 otherwise.
+ */
 int	line_contains_exactly_two_commas(char *line)
 {
 	int	i;

@@ -10,6 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file parse_colors.c
+ * @brief Functions to parse floor and ceiling 
+ * color definitions from the map file.
+ *
+ * This file contains functions to extract RGB color 
+ * values for the floor and ceiling
+ * from the map file, validate their format, 
+ * and store them in the engine's texture
+ * information structure.
+ */
+
 #include "cub3d.h"
 
 /**
@@ -63,6 +75,11 @@ static int	parse_rgb_value(char *part, int *out)
 	return (1);
 }
 
+/**
+ * @brief Parses RGB components from a split 
+ * string array and fills the RGB array.
+ * @return The filled RGB array on success, NULL on failure.
+ */
 static int	*parse_rgb_values(char **rgb_parts, int *rgb)
 {
 	int	i;

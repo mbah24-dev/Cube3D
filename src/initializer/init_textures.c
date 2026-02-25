@@ -10,6 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file init_textures.c
+ * @brief Functions to load and initialize textures for the cub3D engine.
+ */
 #include "cub3d.h"
 
 /**

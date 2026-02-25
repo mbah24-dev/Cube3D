@@ -10,6 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file parse_config.c
+ * @brief Main configuration file parsing functions for the cub3D engine.
+ *
+ * This file contains the main logic to read the configuration file line by line,
+ * extract texture paths, floor and ceiling colors, and map layout. It ensures
+ * that the configuration is valid and properly stored in the engine's data
+ * structures for later use in rendering and game logic.
+ */
+
 #include "cub3d.h"
 
 /**

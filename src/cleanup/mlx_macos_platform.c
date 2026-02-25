@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/* This file contains dummy implementations of the MLX functions that are not
+ * needed on macOS, but are required for cross-platform compatibility. */
+
 #include "cub3d.h"
 
 void	mlx_platform_cleanup(void *mlx)

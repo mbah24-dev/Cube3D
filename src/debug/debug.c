@@ -10,6 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file debug.c
+ * @brief Debugging functions to print engine state and map information.
+ */
+
 #include "cub3d.h"
 
 void	debug_print_char_tab(char **tab)

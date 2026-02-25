@@ -10,6 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+/**
+ * @file parse_map_layout.c
+ * @brief Functions to parse and build the map layout 
+ * from the configuration file.
+ *
+ * This file contains functions to extract the map layout 
+ * from the .cub file content,
+ * determine its dimensions, allocate memory for the map array, and fill it with
+ * the appropriate characters. It also includes logic to replace inner whitespace
+ * with walls to ensure a valid map structure.
+ */
+
 #include "cub3d.h"
 
 /**
